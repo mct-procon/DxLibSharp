@@ -268,11 +268,6 @@ namespace DxLib
 		public const int MV1_ANIMKEY_TYPE_LINEAR = 5;
 		public const int MV1_ANIMKEY_TYPE_BLEND = 6;
 		public const int MV1_ANIMKEY_TYPE_QUATERNION_VMD = 7;
-		public const int DX_SCREEN_FRONT = -4;
-		public const int DX_SCREEN_BACK = -2;
-		public const int DX_SCREEN_WORK = -3;
-		public const int DX_SCREEN_TEMPFRONT = -16;
-		public const int DX_SCREEN_OTHER = -6;
 		public const int DX_NONE_GRAPH = -5;
 		public const int DX_SHAVEDMODE_NONE = 0;
 		public const int DX_SHAVEDMODE_DITHER = 1;
@@ -505,10 +500,6 @@ namespace DxLib
 		public const int DX_NUMMODE_16 = 1;
 		public const int DX_STRMODE_NOT0 = 2;
 		public const int DX_STRMODE_USE0 = 3;
-		public const int DX_CHECKINPUT_KEY = 1;
-		public const int DX_CHECKINPUT_PAD = 2;
-		public const int DX_CHECKINPUT_MOUSE = 4;
-		public const int DX_CHECKINPUT_ALL = DX_CHECKINPUT_KEY;
 		public const int DX_INPUT_KEY_PAD1 = 4097;
 		public const int DX_INPUT_PAD1 = 1;
 		public const int DX_INPUT_PAD2 = 2;
@@ -602,115 +593,6 @@ namespace DxLib
 		public const int XINPUT_BUTTON_B = 13;
 		public const int XINPUT_BUTTON_X = 14;
 		public const int XINPUT_BUTTON_Y = 15;
-		public const int KEY_INPUT_BACK = 14;
-		public const int KEY_INPUT_TAB = 15;
-		public const int KEY_INPUT_RETURN = 28;
-		public const int KEY_INPUT_LSHIFT = 42;
-		public const int KEY_INPUT_RSHIFT = 54;
-		public const int KEY_INPUT_LCONTROL = 29;
-		public const int KEY_INPUT_RCONTROL = 157;
-		public const int KEY_INPUT_ESCAPE = 1;
-		public const int KEY_INPUT_SPACE = 57;
-		public const int KEY_INPUT_PGUP = 201;
-		public const int KEY_INPUT_PGDN = 209;
-		public const int KEY_INPUT_END = 207;
-		public const int KEY_INPUT_HOME = 199;
-		public const int KEY_INPUT_LEFT = 203;
-		public const int KEY_INPUT_UP = 200;
-		public const int KEY_INPUT_RIGHT = 205;
-		public const int KEY_INPUT_DOWN = 208;
-		public const int KEY_INPUT_INSERT = 210;
-		public const int KEY_INPUT_DELETE = 211;
-		public const int KEY_INPUT_MINUS = 12;
-		public const int KEY_INPUT_YEN = 125;
-		public const int KEY_INPUT_PREVTRACK = 144;
-		public const int KEY_INPUT_PERIOD = 52;
-		public const int KEY_INPUT_SLASH = 53;
-		public const int KEY_INPUT_LALT = 56;
-		public const int KEY_INPUT_RALT = 184;
-		public const int KEY_INPUT_SCROLL = 70;
-		public const int KEY_INPUT_SEMICOLON = 39;
-		public const int KEY_INPUT_COLON = 146;
-		public const int KEY_INPUT_LBRACKET = 26;
-		public const int KEY_INPUT_RBRACKET = 27;
-		public const int KEY_INPUT_AT = 145;
-		public const int KEY_INPUT_BACKSLASH = 43;
-		public const int KEY_INPUT_COMMA = 51;
-		public const int KEY_INPUT_KANJI = 148;
-		public const int KEY_INPUT_CONVERT = 121;
-		public const int KEY_INPUT_NOCONVERT = 123;
-		public const int KEY_INPUT_KANA = 112;
-		public const int KEY_INPUT_APPS = 221;
-		public const int KEY_INPUT_CAPSLOCK = 58;
-		public const int KEY_INPUT_SYSRQ = 183;
-		public const int KEY_INPUT_PAUSE = 197;
-		public const int KEY_INPUT_LWIN = 219;
-		public const int KEY_INPUT_RWIN = 220;
-		public const int KEY_INPUT_NUMLOCK = 69;
-		public const int KEY_INPUT_NUMPAD0 = 82;
-		public const int KEY_INPUT_NUMPAD1 = 79;
-		public const int KEY_INPUT_NUMPAD2 = 80;
-		public const int KEY_INPUT_NUMPAD3 = 81;
-		public const int KEY_INPUT_NUMPAD4 = 75;
-		public const int KEY_INPUT_NUMPAD5 = 76;
-		public const int KEY_INPUT_NUMPAD6 = 77;
-		public const int KEY_INPUT_NUMPAD7 = 71;
-		public const int KEY_INPUT_NUMPAD8 = 72;
-		public const int KEY_INPUT_NUMPAD9 = 73;
-		public const int KEY_INPUT_MULTIPLY = 55;
-		public const int KEY_INPUT_ADD = 78;
-		public const int KEY_INPUT_SUBTRACT = 74;
-		public const int KEY_INPUT_DECIMAL = 83;
-		public const int KEY_INPUT_DIVIDE = 181;
-		public const int KEY_INPUT_NUMPADENTER = 156;
-		public const int KEY_INPUT_F1 = 59;
-		public const int KEY_INPUT_F2 = 60;
-		public const int KEY_INPUT_F3 = 61;
-		public const int KEY_INPUT_F4 = 62;
-		public const int KEY_INPUT_F5 = 63;
-		public const int KEY_INPUT_F6 = 64;
-		public const int KEY_INPUT_F7 = 65;
-		public const int KEY_INPUT_F8 = 66;
-		public const int KEY_INPUT_F9 = 67;
-		public const int KEY_INPUT_F10 = 68;
-		public const int KEY_INPUT_F11 = 87;
-		public const int KEY_INPUT_F12 = 88;
-		public const int KEY_INPUT_A = 30;
-		public const int KEY_INPUT_B = 48;
-		public const int KEY_INPUT_C = 46;
-		public const int KEY_INPUT_D = 32;
-		public const int KEY_INPUT_E = 18;
-		public const int KEY_INPUT_F = 33;
-		public const int KEY_INPUT_G = 34;
-		public const int KEY_INPUT_H = 35;
-		public const int KEY_INPUT_I = 23;
-		public const int KEY_INPUT_J = 36;
-		public const int KEY_INPUT_K = 37;
-		public const int KEY_INPUT_L = 38;
-		public const int KEY_INPUT_M = 50;
-		public const int KEY_INPUT_N = 49;
-		public const int KEY_INPUT_O = 24;
-		public const int KEY_INPUT_P = 25;
-		public const int KEY_INPUT_Q = 16;
-		public const int KEY_INPUT_R = 19;
-		public const int KEY_INPUT_S = 31;
-		public const int KEY_INPUT_T = 20;
-		public const int KEY_INPUT_U = 22;
-		public const int KEY_INPUT_V = 47;
-		public const int KEY_INPUT_W = 17;
-		public const int KEY_INPUT_X = 45;
-		public const int KEY_INPUT_Y = 21;
-		public const int KEY_INPUT_Z = 44;
-		public const int KEY_INPUT_0 = 11;
-		public const int KEY_INPUT_1 = 2;
-		public const int KEY_INPUT_2 = 3;
-		public const int KEY_INPUT_3 = 4;
-		public const int KEY_INPUT_4 = 5;
-		public const int KEY_INPUT_5 = 6;
-		public const int KEY_INPUT_6 = 7;
-		public const int KEY_INPUT_7 = 8;
-		public const int KEY_INPUT_8 = 9;
-		public const int KEY_INPUT_9 = 10;
 		public const int CTRL_CODE_BS = 8;
 		public const int CTRL_CODE_TAB = 9;
 		public const int CTRL_CODE_CR = 13;
@@ -2871,38 +2753,6 @@ namespace DxLib
 			}
 		}
 
-		[DllImport("DxLibW.dll", EntryPoint="dx_WaitTimer", CharSet=CharSet.Unicode)]
-		extern static int  dx_WaitTimer_x86( int  WaitTime);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_WaitTimer", CharSet=CharSet.Unicode)]
-		extern static int  dx_WaitTimer_x64( int  WaitTime);
-		public static int  WaitTimer( int  WaitTime)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_WaitTimer_x86( WaitTime );
-			}
-			else
-			{
-				return dx_WaitTimer_x64( WaitTime );
-			}
-		}
-
-		[DllImport("DxLibW.dll", EntryPoint="dx_WaitKey", CharSet=CharSet.Unicode)]
-		extern static int  dx_WaitKey_x86( );
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_WaitKey", CharSet=CharSet.Unicode)]
-		extern static int  dx_WaitKey_x64( );
-		public static int  WaitKey( )
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_WaitKey_x86( );
-			}
-			else
-			{
-				return dx_WaitKey_x64( );
-			}
-		}
-
 		[DllImport("DxLibW.dll", EntryPoint="dx_GetNowCount", CharSet=CharSet.Unicode)]
 		extern static int  dx_GetNowCount_x86( int  UseRDTSCFlag);
 		[DllImport("DxLibW_x64.dll", EntryPoint="dx_GetNowCount", CharSet=CharSet.Unicode)]
@@ -3242,49 +3092,6 @@ namespace DxLib
 			else
 			{
 				return dx_SetLogDrawArea_x64( x1 , y1 , x2 , y2 );
-			}
-		}
-
-		[DllImport("DxLibW.dll", EntryPoint="dx_putsDx", CharSet=CharSet.Unicode)]
-		extern static int  dx_putsDx_x86( string  String, int  NewLine);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_putsDx", CharSet=CharSet.Unicode)]
-		extern static int  dx_putsDx_x64( string  String, int  NewLine);
-		public static int  putsDx( string  String)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_putsDx_x86( String , TRUE );
-			}
-			else
-			{
-				return dx_putsDx_x64( String , TRUE );
-			}
-		}
-		public static int  putsDx( string  String, int  NewLine)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_putsDx_x86( String , NewLine );
-			}
-			else
-			{
-				return dx_putsDx_x64( String , NewLine );
-			}
-		}
-
-		[DllImport("DxLibW.dll", EntryPoint="dx_clsDx", CharSet=CharSet.Unicode)]
-		extern static int  dx_clsDx_x86( );
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_clsDx", CharSet=CharSet.Unicode)]
-		extern static int  dx_clsDx_x64( );
-		public static int  clsDx( )
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_clsDx_x86( );
-			}
-			else
-			{
-				return dx_clsDx_x64( );
 			}
 		}
 
@@ -6621,64 +6428,7 @@ namespace DxLib
 			}
 		}
 
-		[DllImport("DxLibW.dll", EntryPoint="dx_CheckHitKey", CharSet=CharSet.Unicode)]
-		extern static int  dx_CheckHitKey_x86( int  KeyCode);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_CheckHitKey", CharSet=CharSet.Unicode)]
-		extern static int  dx_CheckHitKey_x64( int  KeyCode);
-		public static int  CheckHitKey( int  KeyCode)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_CheckHitKey_x86( KeyCode );
-			}
-			else
-			{
-				return dx_CheckHitKey_x64( KeyCode );
-			}
-		}
-
-		[DllImport("DxLibW.dll", EntryPoint="dx_CheckHitKeyAll", CharSet=CharSet.Unicode)]
-		extern static int  dx_CheckHitKeyAll_x86( int  CheckType);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_CheckHitKeyAll", CharSet=CharSet.Unicode)]
-		extern static int  dx_CheckHitKeyAll_x64( int  CheckType);
-		public static int  CheckHitKeyAll( )
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_CheckHitKeyAll_x86( DX_CHECKINPUT_ALL );
-			}
-			else
-			{
-				return dx_CheckHitKeyAll_x64( DX_CHECKINPUT_ALL );
-			}
-		}
-		public static int  CheckHitKeyAll( int  CheckType)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_CheckHitKeyAll_x86( CheckType );
-			}
-			else
-			{
-				return dx_CheckHitKeyAll_x64( CheckType );
-			}
-		}
-
-		[DllImport("DxLibW.dll", EntryPoint="dx_GetHitKeyStateAll", CharSet=CharSet.Unicode)]
-		extern static int  dx_GetHitKeyStateAll_x86( [In, Out] byte[]  KeyStateArray);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_GetHitKeyStateAll", CharSet=CharSet.Unicode)]
-		extern static int  dx_GetHitKeyStateAll_x64( [In, Out] byte[]  KeyStateArray);
-		public static int  GetHitKeyStateAll( [In, Out] byte[]  KeyStateArray)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_GetHitKeyStateAll_x86( KeyStateArray );
-			}
-			else
-			{
-				return dx_GetHitKeyStateAll_x64( KeyStateArray );
-			}
-		}
+		
 
 		[DllImport("DxLibW.dll", EntryPoint="dx_GetJoypadNum", CharSet=CharSet.Unicode)]
 		extern static int  dx_GetJoypadNum_x86( );
@@ -12459,22 +12209,6 @@ namespace DxLib
 			}
 		}
 
-		[DllImport("DxLibW.dll", EntryPoint="dx_WaitVSync", CharSet=CharSet.Unicode)]
-		extern static int  dx_WaitVSync_x86( int  SyncNum);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_WaitVSync", CharSet=CharSet.Unicode)]
-		extern static int  dx_WaitVSync_x64( int  SyncNum);
-		public static int  WaitVSync( int  SyncNum)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_WaitVSync_x86( SyncNum );
-			}
-			else
-			{
-				return dx_WaitVSync_x64( SyncNum );
-			}
-		}
-
 		[DllImport("DxLibW.dll", EntryPoint="dx_ClsDrawScreen", CharSet=CharSet.Unicode)]
 		extern static int  dx_ClsDrawScreen_x86( );
 		[DllImport("DxLibW_x64.dll", EntryPoint="dx_ClsDrawScreen", CharSet=CharSet.Unicode)]
@@ -12488,22 +12222,6 @@ namespace DxLib
 			else
 			{
 				return dx_ClsDrawScreen_x64( );
-			}
-		}
-
-		[DllImport("DxLibW.dll", EntryPoint="dx_SetDrawScreen", CharSet=CharSet.Unicode)]
-		extern static int  dx_SetDrawScreen_x86( int  DrawScreen);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_SetDrawScreen", CharSet=CharSet.Unicode)]
-		extern static int  dx_SetDrawScreen_x64( int  DrawScreen);
-		public static int  SetDrawScreen( int  DrawScreen)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_SetDrawScreen_x86( DrawScreen );
-			}
-			else
-			{
-				return dx_SetDrawScreen_x64( DrawScreen );
 			}
 		}
 

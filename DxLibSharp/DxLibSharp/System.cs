@@ -27,5 +27,13 @@ namespace DxLib {
         extern static int dx_ProcessMessage_x64();
         public static Result ProcessMessage() =>
             (Result)(Environment.Is64BitProcess ? dx_ProcessMessage_x64() : dx_ProcessMessage_x86());
+
+        [DllImport("DxLibW.dll", EntryPoint = "dx_WaitTimer", CharSet = CharSet.Unicode)]
+        extern static int dx_WaitTimer_x86(int WaitTime);
+        [DllImport("DxLibW_x64.dll", EntryPoint = "dx_WaitTimer", CharSet = CharSet.Unicode)]
+        extern static int dx_WaitTimer_x64(int WaitTime);
+        public static Result WaitTimer(int WaitTime) =>
+            (Result)(Environment.Is64BitProcess ? dx_WaitTimer_x64(WaitTime) : dx_WaitTimer_x86(WaitTime));
+
     }
 }
