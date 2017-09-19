@@ -119,8 +119,9 @@ namespace DxLib {
             Key = 0b001, Pad = 0b010, Mouse = 0b100, All = Key
         }
 
-        public class KeyState {
-            internal byte[] Data = new byte[256];
+        public struct KeyState {
+            internal byte[] Data;
+
             public bool this[KeyInput i] {
                 get => Data[(int)i] == 1;
             }
@@ -154,9 +155,11 @@ namespace DxLib {
         extern static int dx_GetHitKeyStateAll_x86([In, Out] byte[] KeyStateArray);
         [DllImport("DxLibW_x64.dll", EntryPoint = "dx_GetHitKeyStateAll", CharSet = CharSet.Unicode)]
         extern static int dx_GetHitKeyStateAll_x64([In, Out] byte[] KeyStateArray);
-        public static Result GetHitKeyStateAll(ref KeyState Data) {
-            if (Data == null) Data = new KeyState();
-            return (Result)(Environment.Is64BitProcess ? dx_GetHitKeyStateAll_x64(Data.Data) : dx_GetHitKeyStateAll_x86(Data.Data));
+        public static (KeyState, Result) GetHitKeyStateAll() {
+            KeyState result = new KeyState();
+            result.Data = new byte[256];
+            Result res = (Result)(Environment.Is64BitProcess ? dx_GetHitKeyStateAll_x64(result.Data) : dx_GetHitKeyStateAll_x86(result.Data));
+            return (result, res);
         }
     }
 }

@@ -102,14 +102,6 @@ namespace DxLib
 		public const int DX_DRAWMODE_ANISOTROPIC = 2;
 		public const int DX_DRAWMODE_OTHER = 3;
 		public const int DX_DRAWMODE_NUM = 4;
-		public const int DX_FONTTYPE_NORMAL = 0;
-		public const int DX_FONTTYPE_EDGE = 1;
-		public const int DX_FONTTYPE_ANTIALIASING = 2;
-		public const int DX_FONTTYPE_ANTIALIASING_4X4 = 18;
-		public const int DX_FONTTYPE_ANTIALIASING_8X8 = 34;
-		public const int DX_FONTTYPE_ANTIALIASING_EDGE = 3;
-		public const int DX_FONTTYPE_ANTIALIASING_EDGE_4X4 = 19;
-		public const int DX_FONTTYPE_ANTIALIASING_EDGE_8X8 = 35;
 		public const int DX_FONTIMAGE_BIT_1 = 0;
 		public const int DX_FONTIMAGE_BIT_4 = 1;
 		public const int DX_FONTIMAGE_BIT_8 = 2;
@@ -1293,10 +1285,10 @@ namespace DxLib
 		[StructLayout(LayoutKind.Explicit)]
 		public struct POINTDATA
 		{
-			[FieldOffset(0)] public int  x;
-			[FieldOffset(4)] public int  y;
-			[FieldOffset(8)] public uint  color;
-			[FieldOffset(12)] public int  pal;
+			[FieldOffset(0)] public int  X;
+			[FieldOffset(4)] public int  Y;
+			[FieldOffset(8)] public uint  Color;
+			[FieldOffset(12)] public int  Pal;
 		};
 
 		[StructLayout(LayoutKind.Explicit)]
@@ -2753,75 +2745,6 @@ namespace DxLib
 			}
 		}
 
-		[DllImport("DxLibW.dll", EntryPoint="dx_GetNowCount", CharSet=CharSet.Unicode)]
-		extern static int  dx_GetNowCount_x86( int  UseRDTSCFlag);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_GetNowCount", CharSet=CharSet.Unicode)]
-		extern static int  dx_GetNowCount_x64( int  UseRDTSCFlag);
-		public static int  GetNowCount( )
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_GetNowCount_x86( FALSE );
-			}
-			else
-			{
-				return dx_GetNowCount_x64( FALSE );
-			}
-		}
-		public static int  GetNowCount( int  UseRDTSCFlag)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_GetNowCount_x86( UseRDTSCFlag );
-			}
-			else
-			{
-				return dx_GetNowCount_x64( UseRDTSCFlag );
-			}
-		}
-
-		[DllImport("DxLibW.dll", EntryPoint="dx_GetNowHiPerformanceCount", CharSet=CharSet.Unicode)]
-		extern static long  dx_GetNowHiPerformanceCount_x86( int  UseRDTSCFlag);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_GetNowHiPerformanceCount", CharSet=CharSet.Unicode)]
-		extern static long  dx_GetNowHiPerformanceCount_x64( int  UseRDTSCFlag);
-		public static long  GetNowHiPerformanceCount( )
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_GetNowHiPerformanceCount_x86( FALSE );
-			}
-			else
-			{
-				return dx_GetNowHiPerformanceCount_x64( FALSE );
-			}
-		}
-		public static long  GetNowHiPerformanceCount( int  UseRDTSCFlag)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_GetNowHiPerformanceCount_x86( UseRDTSCFlag );
-			}
-			else
-			{
-				return dx_GetNowHiPerformanceCount_x64( UseRDTSCFlag );
-			}
-		}
-
-		[DllImport("DxLibW.dll", EntryPoint="dx_GetDateTime", CharSet=CharSet.Unicode)]
-		extern static int  dx_GetDateTime_x86( out DATEDATA  DateBuf);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_GetDateTime", CharSet=CharSet.Unicode)]
-		extern static int  dx_GetDateTime_x64( out DATEDATA  DateBuf);
-		public static int  GetDateTime( out DATEDATA  DateBuf)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_GetDateTime_x86( out DateBuf );
-			}
-			else
-			{
-				return dx_GetDateTime_x64( out DateBuf );
-			}
-		}
 
 		[DllImport("DxLibW.dll", EntryPoint="dx_GetRand", CharSet=CharSet.Unicode)]
 		extern static int  dx_GetRand_x86( int  RandMax);
@@ -17719,54 +17642,6 @@ namespace DxLib
 			}
 		}
 
-		[DllImport("DxLibW.dll", EntryPoint="dx_ChangeFontType", CharSet=CharSet.Unicode)]
-		extern static int  dx_ChangeFontType_x86( int  FontType);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_ChangeFontType", CharSet=CharSet.Unicode)]
-		extern static int  dx_ChangeFontType_x64( int  FontType);
-		public static int  ChangeFontType( int  FontType)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_ChangeFontType_x86( FontType );
-			}
-			else
-			{
-				return dx_ChangeFontType_x64( FontType );
-			}
-		}
-
-		[DllImport("DxLibW.dll", EntryPoint="dx_SetFontSize", CharSet=CharSet.Unicode)]
-		extern static int  dx_SetFontSize_x86( int  FontSize);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_SetFontSize", CharSet=CharSet.Unicode)]
-		extern static int  dx_SetFontSize_x64( int  FontSize);
-		public static int  SetFontSize( int  FontSize)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_SetFontSize_x86( FontSize );
-			}
-			else
-			{
-				return dx_SetFontSize_x64( FontSize );
-			}
-		}
-
-		[DllImport("DxLibW.dll", EntryPoint="dx_GetFontSize", CharSet=CharSet.Unicode)]
-		extern static int  dx_GetFontSize_x86( );
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_GetFontSize", CharSet=CharSet.Unicode)]
-		extern static int  dx_GetFontSize_x64( );
-		public static int  GetFontSize( )
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_GetFontSize_x86( );
-			}
-			else
-			{
-				return dx_GetFontSize_x64( );
-			}
-		}
-
 		[DllImport("DxLibW.dll", EntryPoint="dx_GetFontEdgeSize", CharSet=CharSet.Unicode)]
 		extern static int  dx_GetFontEdgeSize_x86( );
 		[DllImport("DxLibW_x64.dll", EntryPoint="dx_GetFontEdgeSize", CharSet=CharSet.Unicode)]
@@ -18571,60 +18446,6 @@ namespace DxLib
 			}
 		}
 
-		[DllImport("DxLibW.dll", EntryPoint="dx_DrawString", CharSet=CharSet.Unicode)]
-		extern static int  dx_DrawString_x86( int  x, int  y, string  String, uint  Color, uint  EdgeColor);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_DrawString", CharSet=CharSet.Unicode)]
-		extern static int  dx_DrawString_x64( int  x, int  y, string  String, uint  Color, uint  EdgeColor);
-		public static int  DrawString( int  x, int  y, string  String, uint  Color)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_DrawString_x86( x , y , String , Color , 0 );
-			}
-			else
-			{
-				return dx_DrawString_x64( x , y , String , Color , 0 );
-			}
-		}
-		public static int  DrawString( int  x, int  y, string  String, uint  Color, uint  EdgeColor)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_DrawString_x86( x , y , String , Color , EdgeColor );
-			}
-			else
-			{
-				return dx_DrawString_x64( x , y , String , Color , EdgeColor );
-			}
-		}
-
-		[DllImport("DxLibW.dll", EntryPoint="dx_DrawVString", CharSet=CharSet.Unicode)]
-		extern static int  dx_DrawVString_x86( int  x, int  y, string  String, uint  Color, uint  EdgeColor);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_DrawVString", CharSet=CharSet.Unicode)]
-		extern static int  dx_DrawVString_x64( int  x, int  y, string  String, uint  Color, uint  EdgeColor);
-		public static int  DrawVString( int  x, int  y, string  String, uint  Color)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_DrawVString_x86( x , y , String , Color , 0 );
-			}
-			else
-			{
-				return dx_DrawVString_x64( x , y , String , Color , 0 );
-			}
-		}
-		public static int  DrawVString( int  x, int  y, string  String, uint  Color, uint  EdgeColor)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_DrawVString_x86( x , y , String , Color , EdgeColor );
-			}
-			else
-			{
-				return dx_DrawVString_x64( x , y , String , Color , EdgeColor );
-			}
-		}
-
 		[DllImport("DxLibW.dll", EntryPoint="dx_DrawExtendString", CharSet=CharSet.Unicode)]
 		extern static int  dx_DrawExtendString_x86( int  x, int  y, double  ExRateX, double  ExRateY, string  String, uint  Color, uint  EdgeColor);
 		[DllImport("DxLibW_x64.dll", EntryPoint="dx_DrawExtendString", CharSet=CharSet.Unicode)]
@@ -18774,60 +18595,6 @@ namespace DxLib
 			else
 			{
 				return dx_DrawModiString_x64( x1 , y1 , x2 , y2 , x3 , y3 , x4 , y4 , Color , EdgeColor , VerticalFlag , String );
-			}
-		}
-
-		[DllImport("DxLibW.dll", EntryPoint="dx_DrawStringF", CharSet=CharSet.Unicode)]
-		extern static int  dx_DrawStringF_x86( float  x, float  y, string  String, uint  Color, uint  EdgeColor);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_DrawStringF", CharSet=CharSet.Unicode)]
-		extern static int  dx_DrawStringF_x64( float  x, float  y, string  String, uint  Color, uint  EdgeColor);
-		public static int  DrawStringF( float  x, float  y, string  String, uint  Color)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_DrawStringF_x86( x , y , String , Color , 0 );
-			}
-			else
-			{
-				return dx_DrawStringF_x64( x , y , String , Color , 0 );
-			}
-		}
-		public static int  DrawStringF( float  x, float  y, string  String, uint  Color, uint  EdgeColor)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_DrawStringF_x86( x , y , String , Color , EdgeColor );
-			}
-			else
-			{
-				return dx_DrawStringF_x64( x , y , String , Color , EdgeColor );
-			}
-		}
-
-		[DllImport("DxLibW.dll", EntryPoint="dx_DrawVStringF", CharSet=CharSet.Unicode)]
-		extern static int  dx_DrawVStringF_x86( float  x, float  y, string  String, uint  Color, uint  EdgeColor);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_DrawVStringF", CharSet=CharSet.Unicode)]
-		extern static int  dx_DrawVStringF_x64( float  x, float  y, string  String, uint  Color, uint  EdgeColor);
-		public static int  DrawVStringF( float  x, float  y, string  String, uint  Color)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_DrawVStringF_x86( x , y , String , Color , 0 );
-			}
-			else
-			{
-				return dx_DrawVStringF_x64( x , y , String , Color , 0 );
-			}
-		}
-		public static int  DrawVStringF( float  x, float  y, string  String, uint  Color, uint  EdgeColor)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_DrawVStringF_x86( x , y , String , Color , EdgeColor );
-			}
-			else
-			{
-				return dx_DrawVStringF_x64( x , y , String , Color , EdgeColor );
 			}
 		}
 

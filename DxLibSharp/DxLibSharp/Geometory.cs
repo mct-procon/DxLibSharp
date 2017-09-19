@@ -32,12 +32,12 @@ namespace DxLib {
             (Result)(Environment.Is64BitProcess ? dx_DrawBox_x64(x1, y1, x2, y2, Color.Co, FillFlag) : dx_DrawBox_x86(x1, y1, x2, y2, Color.Co, FillFlag));
 
         [DllImport("DxLibW.dll", EntryPoint = "dx_DrawBoxAA", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawBoxAA_x86(float x1, float y1, float x2, float y2, uint Color, int FillFlag, float LineThickness);
+        extern static int dx_DrawBoxAA_x86(float x1, float y1, float x2, float y2, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag, float LineThickness);
         [DllImport("DxLibW_x64.dll", EntryPoint = "dx_DrawBoxAA", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawBoxAA_x64(float x1, float y1, float x2, float y2, uint Color, int FillFlag, float LineThickness);
-        public static Result DrawBoxAA(float x1, float y1, float x2, float y2, uint Color, int FillFlag, float LineThickness = 1.0f) =>
+        extern static int dx_DrawBoxAA_x64(float x1, float y1, float x2, float y2, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag, float LineThickness);
+        public static Result DrawBoxAA(float x1, float y1, float x2, float y2, uint Color, bool FillFlag, float LineThickness = 1.0f) =>
             (Result)(Environment.Is64BitProcess ? dx_DrawBoxAA_x86(x1, y1, x2, y2, Color, FillFlag, LineThickness) : dx_DrawBoxAA_x64(x1, y1, x2, y2, Color, FillFlag, LineThickness));
-        public static Result DrawBoxAA(float x1, float y1, float x2, float y2, Color Color, int FillFlag, float LineThickness = 1.0f) =>
+        public static Result DrawBoxAA(float x1, float y1, float x2, float y2, Color Color, bool FillFlag, float LineThickness = 1.0f) =>
             (Result)(Environment.Is64BitProcess ? dx_DrawBoxAA_x86(x1, y1, x2, y2, Color.Co, FillFlag, LineThickness) : dx_DrawBoxAA_x64(x1, y1, x2, y2, Color.Co, FillFlag, LineThickness));
 
         [DllImport("DxLibW.dll", EntryPoint = "dx_DrawFillBox", CharSet = CharSet.Unicode)]
@@ -68,185 +68,101 @@ namespace DxLib {
             (Result)(Environment.Is64BitProcess ? dx_DrawCircle_x64(x, y, r, Color.Co, FillFlag, LineThickness) : dx_DrawCircle_x86(x, y, r, Color.Co, FillFlag, LineThickness));
 
         [DllImport("DxLibW.dll", EntryPoint = "dx_DrawCircleAA", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawCircleAA_x86(float x, float y, float r, int posnum, uint Color, int FillFlag, float LineThickness);
+        extern static int dx_DrawCircleAA_x86(float x, float y, float r, int posnum, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag, float LineThickness);
         [DllImport("DxLibW_x64.dll", EntryPoint = "dx_DrawCircleAA", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawCircleAA_x64(float x, float y, float r, int posnum, uint Color, int FillFlag, float LineThickness);
-        public static int DrawCircleAA(float x, float y, float r, int posnum, uint Color) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawCircleAA_x86(x, y, r, posnum, Color, TRUE, 1.0f);
-            } else {
-                return dx_DrawCircleAA_x64(x, y, r, posnum, Color, TRUE, 1.0f);
-            }
-        }
-        public static int DrawCircleAA(float x, float y, float r, int posnum, uint Color, int FillFlag) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawCircleAA_x86(x, y, r, posnum, Color, FillFlag, 1.0f);
-            } else {
-                return dx_DrawCircleAA_x64(x, y, r, posnum, Color, FillFlag, 1.0f);
-            }
-        }
-        public static int DrawCircleAA(float x, float y, float r, int posnum, uint Color, int FillFlag, float LineThickness) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawCircleAA_x86(x, y, r, posnum, Color, FillFlag, LineThickness);
-            } else {
-                return dx_DrawCircleAA_x64(x, y, r, posnum, Color, FillFlag, LineThickness);
-            }
-        }
+        extern static int dx_DrawCircleAA_x64(float x, float y, float r, int posnum, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag, float LineThickness);
+        public static Result DrawCircleAA(float x, float y, float r, int posnum, uint Color, bool FillFlag = true, float LineThickness = 1.0f) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawCircleAA_x64(x, y, r, posnum, Color, FillFlag, LineThickness) : dx_DrawCircleAA_x86(x, y, r, posnum, Color, FillFlag, LineThickness));
+        public static Result DrawCircleAA(float x, float y, float r, int posnum, Color Color, bool FillFlag = true, float LineThickness = 1.0f) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawCircleAA_x64(x, y, r, posnum, Color.Co, FillFlag, LineThickness) : dx_DrawCircleAA_x86(x, y, r, posnum, Color.Co, FillFlag, LineThickness));
 
         [DllImport("DxLibW.dll", EntryPoint = "dx_DrawOval", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawOval_x86(int x, int y, int rx, int ry, uint Color, int FillFlag, int LineThickness);
+        extern static int dx_DrawOval_x86(int x, int y, int rx, int ry, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag, int LineThickness);
         [DllImport("DxLibW_x64.dll", EntryPoint = "dx_DrawOval", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawOval_x64(int x, int y, int rx, int ry, uint Color, int FillFlag, int LineThickness);
-        public static int DrawOval(int x, int y, int rx, int ry, uint Color, int FillFlag) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawOval_x86(x, y, rx, ry, Color, FillFlag, 1);
-            } else {
-                return dx_DrawOval_x64(x, y, rx, ry, Color, FillFlag, 1);
-            }
-        }
-        public static int DrawOval(int x, int y, int rx, int ry, uint Color, int FillFlag, int LineThickness) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawOval_x86(x, y, rx, ry, Color, FillFlag, LineThickness);
-            } else {
-                return dx_DrawOval_x64(x, y, rx, ry, Color, FillFlag, LineThickness);
-            }
-        }
+        extern static int dx_DrawOval_x64(int x, int y, int rx, int ry, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag, int LineThickness);
+        public static Result DrawOval(int x, int y, int rx, int ry, uint Color, bool FillFlag = true, int LineThickness = 1) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawOval_x64(x, y, rx, ry, Color, FillFlag, LineThickness) : dx_DrawOval_x86(x, y, rx, ry, Color, FillFlag, LineThickness));
+        public static Result DrawOval(int x, int y, int rx, int ry, Color Color, bool FillFlag = true, int LineThickness = 1) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawOval_x64(x, y, rx, ry, Color.Co, FillFlag, LineThickness) : dx_DrawOval_x86(x, y, rx, ry, Color.Co, FillFlag, LineThickness));
 
         [DllImport("DxLibW.dll", EntryPoint = "dx_DrawOvalAA", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawOvalAA_x86(float x, float y, float rx, float ry, int posnum, uint Color, int FillFlag, float LineThickness);
+        extern static int dx_DrawOvalAA_x86(float x, float y, float rx, float ry, int posnum, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag, float LineThickness);
         [DllImport("DxLibW_x64.dll", EntryPoint = "dx_DrawOvalAA", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawOvalAA_x64(float x, float y, float rx, float ry, int posnum, uint Color, int FillFlag, float LineThickness);
-        public static int DrawOvalAA(float x, float y, float rx, float ry, int posnum, uint Color, int FillFlag) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawOvalAA_x86(x, y, rx, ry, posnum, Color, FillFlag, 1.0f);
-            } else {
-                return dx_DrawOvalAA_x64(x, y, rx, ry, posnum, Color, FillFlag, 1.0f);
-            }
-        }
-        public static int DrawOvalAA(float x, float y, float rx, float ry, int posnum, uint Color, int FillFlag, float LineThickness) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawOvalAA_x86(x, y, rx, ry, posnum, Color, FillFlag, LineThickness);
-            } else {
-                return dx_DrawOvalAA_x64(x, y, rx, ry, posnum, Color, FillFlag, LineThickness);
-            }
-        }
+        extern static int dx_DrawOvalAA_x64(float x, float y, float rx, float ry, int posnum, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag, float LineThickness);
+        public static Result DrawOvalAA(float x, float y, float rx, float ry, int posnum, Color Color, bool FillFlag, float LineThickness = 1.0f) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawOvalAA_x64(x, y, rx, ry, posnum, Color.Co,FillFlag, LineThickness) : dx_DrawOvalAA_x86(x, y, rx, ry, posnum, Color.Co,FillFlag, LineThickness));
+        public static Result DrawOvalAA(float x, float y, float rx, float ry, int posnum, uint Color, bool FillFlag, float LineThickness = 1.0f) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawOvalAA_x64(x, y, rx, ry, posnum, Color, FillFlag, LineThickness) : dx_DrawOvalAA_x86(x, y, rx, ry, posnum, Color, FillFlag, LineThickness));
 
         [DllImport("DxLibW.dll", EntryPoint = "dx_DrawOval_Rect", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawOval_Rect_x86(int x1, int y1, int x2, int y2, uint Color, int FillFlag);
+        extern static int dx_DrawOval_Rect_x86(int x1, int y1, int x2, int y2, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag);
         [DllImport("DxLibW_x64.dll", EntryPoint = "dx_DrawOval_Rect", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawOval_Rect_x64(int x1, int y1, int x2, int y2, uint Color, int FillFlag);
-        public static int DrawOval_Rect(int x1, int y1, int x2, int y2, uint Color, int FillFlag) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawOval_Rect_x86(x1, y1, x2, y2, Color, FillFlag);
-            } else {
-                return dx_DrawOval_Rect_x64(x1, y1, x2, y2, Color, FillFlag);
-            }
-        }
+        extern static int dx_DrawOval_Rect_x64(int x1, int y1, int x2, int y2, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag);
+        public static Result DrawOval_Rect(int x1, int y1, int x2, int y2, Color Color, bool FillFlag) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawOval_Rect_x64(x1, y1, x2, y2, Color.Co, FillFlag) : dx_DrawOval_Rect_x86(x1, y1, x2, y2, Color.Co, FillFlag));
+        public static Result DrawOval_Rect(int x1, int y1, int x2, int y2, uint Color, bool FillFlag) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawOval_Rect_x64(x1, y1, x2, y2, Color, FillFlag) : dx_DrawOval_Rect_x86(x1, y1, x2, y2, Color, FillFlag));
 
         [DllImport("DxLibW.dll", EntryPoint = "dx_DrawTriangle", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawTriangle_x86(int x1, int y1, int x2, int y2, int x3, int y3, uint Color, int FillFlag);
+        extern static int dx_DrawTriangle_x86(int x1, int y1, int x2, int y2, int x3, int y3, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag);
         [DllImport("DxLibW_x64.dll", EntryPoint = "dx_DrawTriangle", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawTriangle_x64(int x1, int y1, int x2, int y2, int x3, int y3, uint Color, int FillFlag);
-        public static int DrawTriangle(int x1, int y1, int x2, int y2, int x3, int y3, uint Color, int FillFlag) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawTriangle_x86(x1, y1, x2, y2, x3, y3, Color, FillFlag);
-            } else {
-                return dx_DrawTriangle_x64(x1, y1, x2, y2, x3, y3, Color, FillFlag);
-            }
-        }
+        extern static int dx_DrawTriangle_x64(int x1, int y1, int x2, int y2, int x3, int y3, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag);
+        public static Result DrawTriangle(int x1, int y1, int x2, int y2, int x3, int y3, Color Color, bool FillFlag) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawTriangle_x64(x1, y1, x2, y2, x3, y3, Color.Co, FillFlag) : dx_DrawTriangle_x86(x1, y1, x2, y2, x3, y3, Color.Co, FillFlag));
+        public static Result DrawTriangle(int x1, int y1, int x2, int y2, int x3, int y3, uint Color, bool FillFlag) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawTriangle_x64(x1, y1, x2, y2, x3, y3, Color, FillFlag) : dx_DrawTriangle_x86(x1, y1, x2, y2, x3, y3, Color, FillFlag));
 
         [DllImport("DxLibW.dll", EntryPoint = "dx_DrawTriangleAA", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawTriangleAA_x86(float x1, float y1, float x2, float y2, float x3, float y3, uint Color, int FillFlag, float LineThickness);
+        extern static int dx_DrawTriangleAA_x86(float x1, float y1, float x2, float y2, float x3, float y3, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag, float LineThickness);
         [DllImport("DxLibW_x64.dll", EntryPoint = "dx_DrawTriangleAA", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawTriangleAA_x64(float x1, float y1, float x2, float y2, float x3, float y3, uint Color, int FillFlag, float LineThickness);
-        public static int DrawTriangleAA(float x1, float y1, float x2, float y2, float x3, float y3, uint Color, int FillFlag) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawTriangleAA_x86(x1, y1, x2, y2, x3, y3, Color, FillFlag, 1.0f);
-            } else {
-                return dx_DrawTriangleAA_x64(x1, y1, x2, y2, x3, y3, Color, FillFlag, 1.0f);
-            }
-        }
-        public static int DrawTriangleAA(float x1, float y1, float x2, float y2, float x3, float y3, uint Color, int FillFlag, float LineThickness) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawTriangleAA_x86(x1, y1, x2, y2, x3, y3, Color, FillFlag, LineThickness);
-            } else {
-                return dx_DrawTriangleAA_x64(x1, y1, x2, y2, x3, y3, Color, FillFlag, LineThickness);
-            }
-        }
+        extern static int dx_DrawTriangleAA_x64(float x1, float y1, float x2, float y2, float x3, float y3, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag, float LineThickness);
+        public static Result DrawTriangleAA(float x1, float y1, float x2, float y2, float x3, float y3, Color Color, bool FillFlag, float LineThickness = 1.0f) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawTriangleAA_x64(x1, y1, x2, y2, x3, y3, Color.Co, FillFlag, LineThickness) : dx_DrawTriangleAA_x86(x1, y1, x2, y2, x3, y3, Color.Co, FillFlag, LineThickness));
+        public static Result DrawTriangleAA(float x1, float y1, float x2, float y2, float x3, float y3, uint Color, bool FillFlag, float LineThickness = 1.0f) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawTriangleAA_x64(x1, y1, x2, y2, x3, y3, Color, FillFlag, LineThickness) : dx_DrawTriangleAA_x86(x1, y1, x2, y2, x3, y3, Color, FillFlag, LineThickness));
 
         [DllImport("DxLibW.dll", EntryPoint = "dx_DrawQuadrangle", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawQuadrangle_x86(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, uint Color, int FillFlag);
+        extern static int dx_DrawQuadrangle_x86(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag);
         [DllImport("DxLibW_x64.dll", EntryPoint = "dx_DrawQuadrangle", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawQuadrangle_x64(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, uint Color, int FillFlag);
-        public static int DrawQuadrangle(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, uint Color, int FillFlag) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawQuadrangle_x86(x1, y1, x2, y2, x3, y3, x4, y4, Color, FillFlag);
-            } else {
-                return dx_DrawQuadrangle_x64(x1, y1, x2, y2, x3, y3, x4, y4, Color, FillFlag);
-            }
-        }
+        extern static int dx_DrawQuadrangle_x64(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag);
+        public static Result DrawQuadrangle(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, Color Color, bool FillFlag) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawQuadrangle_x64(x1, y1, x2, y2, x3, y3, x4, y4, Color.Co, FillFlag) : dx_DrawQuadrangle_x86(x1, y1, x2, y2, x3, y3, x4, y4, Color.Co, FillFlag));
+        public static Result DrawQuadrangle(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, uint Color, bool FillFlag) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawQuadrangle_x64(x1, y1, x2, y2, x3, y3, x4, y4, Color, FillFlag) : dx_DrawQuadrangle_x86(x1, y1, x2, y2, x3, y3, x4, y4, Color, FillFlag));
 
         [DllImport("DxLibW.dll", EntryPoint = "dx_DrawQuadrangleAA", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawQuadrangleAA_x86(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, uint Color, int FillFlag, float LineThickness);
+        extern static int dx_DrawQuadrangleAA_x86(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag, float LineThickness);
         [DllImport("DxLibW_x64.dll", EntryPoint = "dx_DrawQuadrangleAA", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawQuadrangleAA_x64(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, uint Color, int FillFlag, float LineThickness);
-        public static int DrawQuadrangleAA(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, uint Color, int FillFlag) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawQuadrangleAA_x86(x1, y1, x2, y2, x3, y3, x4, y4, Color, FillFlag, 1.0f);
-            } else {
-                return dx_DrawQuadrangleAA_x64(x1, y1, x2, y2, x3, y3, x4, y4, Color, FillFlag, 1.0f);
-            }
-        }
-        public static int DrawQuadrangleAA(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, uint Color, int FillFlag, float LineThickness) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawQuadrangleAA_x86(x1, y1, x2, y2, x3, y3, x4, y4, Color, FillFlag, LineThickness);
-            } else {
-                return dx_DrawQuadrangleAA_x64(x1, y1, x2, y2, x3, y3, x4, y4, Color, FillFlag, LineThickness);
-            }
-        }
+        extern static int dx_DrawQuadrangleAA_x64(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag, float LineThickness);
+        public static Result DrawQuadrangleAA(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Color Color, bool FillFlag, float LineThickness = 1.0f) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawQuadrangleAA_x64(x1, y1, x2, y2, x3, y3, x4, y4, Color.Co, FillFlag, LineThickness) : dx_DrawQuadrangleAA_x86(x1, y1, x2, y2, x3, y3, x4, y4, Color.Co, FillFlag, LineThickness));
+        public static Result DrawQuadrangleAA(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, uint Color, bool FillFlag, float LineThickness = 1.0f) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawQuadrangleAA_x64(x1, y1, x2, y2, x3, y3, x4, y4, Color, FillFlag, LineThickness) : dx_DrawQuadrangleAA_x86(x1, y1, x2, y2, x3, y3, x4, y4, Color, FillFlag, LineThickness));
 
         [DllImport("DxLibW.dll", EntryPoint = "dx_DrawRoundRect", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawRoundRect_x86(int x1, int y1, int x2, int y2, int rx, int ry, uint Color, int FillFlag);
+        extern static int dx_DrawRoundRect_x86(int x1, int y1, int x2, int y2, int rx, int ry, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag);
         [DllImport("DxLibW_x64.dll", EntryPoint = "dx_DrawRoundRect", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawRoundRect_x64(int x1, int y1, int x2, int y2, int rx, int ry, uint Color, int FillFlag);
-        public static int DrawRoundRect(int x1, int y1, int x2, int y2, int rx, int ry, uint Color, int FillFlag) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawRoundRect_x86(x1, y1, x2, y2, rx, ry, Color, FillFlag);
-            } else {
-                return dx_DrawRoundRect_x64(x1, y1, x2, y2, rx, ry, Color, FillFlag);
-            }
-        }
+        extern static int dx_DrawRoundRect_x64(int x1, int y1, int x2, int y2, int rx, int ry, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag);
+        public static Result DrawRoundRect(int x1, int y1, int x2, int y2, int rx, int ry, Color Color, bool FillFlag) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawRoundRect_x64(x1, y1, x2, y2, rx, ry, Color.Co, FillFlag) : dx_DrawRoundRect_x86(x1, y1, x2, y2, rx, ry, Color.Co, FillFlag));
+        public static Result DrawRoundRect(int x1, int y1, int x2, int y2, int rx, int ry, uint Color, bool FillFlag) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawRoundRect_x64(x1, y1, x2, y2, rx, ry, Color, FillFlag) : dx_DrawRoundRect_x86(x1, y1, x2, y2, rx, ry, Color, FillFlag));
 
         [DllImport("DxLibW.dll", EntryPoint = "dx_DrawRoundRectAA", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawRoundRectAA_x86(float x1, float y1, float x2, float y2, float rx, float ry, int posnum, uint Color, int FillFlag, float LineThickness);
+        extern static int dx_DrawRoundRectAA_x86(float x1, float y1, float x2, float y2, float rx, float ry, int posnum, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag, float LineThickness);
         [DllImport("DxLibW_x64.dll", EntryPoint = "dx_DrawRoundRectAA", CharSet = CharSet.Unicode)]
-        extern static int dx_DrawRoundRectAA_x64(float x1, float y1, float x2, float y2, float rx, float ry, int posnum, uint Color, int FillFlag, float LineThickness);
-        public static int DrawRoundRectAA(float x1, float y1, float x2, float y2, float rx, float ry, int posnum, uint Color, int FillFlag) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawRoundRectAA_x86(x1, y1, x2, y2, rx, ry, posnum, Color, FillFlag, 1.0f);
-            } else {
-                return dx_DrawRoundRectAA_x64(x1, y1, x2, y2, rx, ry, posnum, Color, FillFlag, 1.0f);
-            }
-        }
-        public static int DrawRoundRectAA(float x1, float y1, float x2, float y2, float rx, float ry, int posnum, uint Color, int FillFlag, float LineThickness) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawRoundRectAA_x86(x1, y1, x2, y2, rx, ry, posnum, Color, FillFlag, LineThickness);
-            } else {
-                return dx_DrawRoundRectAA_x64(x1, y1, x2, y2, rx, ry, posnum, Color, FillFlag, LineThickness);
-            }
-        }
+        extern static int dx_DrawRoundRectAA_x64(float x1, float y1, float x2, float y2, float rx, float ry, int posnum, uint Color, [MarshalAs(UnmanagedType.Bool)]bool FillFlag, float LineThickness);
+        public static Result DrawRoundRectAA(float x1, float y1, float x2, float y2, float rx, float ry, int posnum, Color Color, bool FillFlag, float LineThickness = 1.0f) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawRoundRectAA_x64(x1, y1, x2, y2, rx, ry, posnum, Color.Co, FillFlag, LineThickness) : dx_DrawRoundRectAA_x86(x1, y1, x2, y2, rx, ry, posnum, Color.Co, FillFlag, LineThickness));
+        public static Result DrawRoundRectAA(float x1, float y1, float x2, float y2, float rx, float ry, int posnum, uint Color, bool FillFlag, float LineThickness = 1.0f) =>
+            (Result)(Environment.Is64BitProcess ? dx_DrawRoundRectAA_x64(x1, y1, x2, y2, rx, ry, posnum, Color, FillFlag, LineThickness) : dx_DrawRoundRectAA_x86(x1, y1, x2, y2, rx, ry, posnum, Color, FillFlag, LineThickness));
 
         [DllImport("DxLibW.dll", EntryPoint = "dx_DrawPixel", CharSet = CharSet.Unicode)]
         extern static int dx_DrawPixel_x86(int x, int y, uint Color);
         [DllImport("DxLibW_x64.dll", EntryPoint = "dx_DrawPixel", CharSet = CharSet.Unicode)]
         extern static int dx_DrawPixel_x64(int x, int y, uint Color);
-        public static int DrawPixel(int x, int y, uint Color) {
-            if (System.IntPtr.Size == 4) {
-                return dx_DrawPixel_x86(x, y, Color);
-            } else {
-                return dx_DrawPixel_x64(x, y, Color);
-            }
-        }
+        public static Result DrawPixel(int x, int y, uint Color) => (Result)(Environment.Is64BitProcess ? dx_DrawPixel_x64(x, y, Color) : dx_DrawPixel_x86(x, y, Color));
+        public static Result DrawPixel(int x, int y, Color Color) => (Result)(Environment.Is64BitProcess ? dx_DrawPixel_x64(x, y, Color.Co) : dx_DrawPixel_x86(x, y, Color.Co));
 
         [DllImport("DxLibW.dll", EntryPoint = "dx_DrawPixelSet", CharSet = CharSet.Unicode)]
         extern static int dx_DrawPixelSet_x86([In, Out] POINTDATA[] PointDataArray, int Num);
