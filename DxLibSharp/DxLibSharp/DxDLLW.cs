@@ -2729,23 +2729,6 @@ namespace DxLib
 			}
 		}
 
-		[DllImport("DxLibW.dll", EntryPoint="dx_SetAlwaysRunFlag", CharSet=CharSet.Unicode)]
-		extern static int  dx_SetAlwaysRunFlag_x86( int  Flag);
-		[DllImport("DxLibW_x64.dll", EntryPoint="dx_SetAlwaysRunFlag", CharSet=CharSet.Unicode)]
-		extern static int  dx_SetAlwaysRunFlag_x64( int  Flag);
-		public static int  SetAlwaysRunFlag( int  Flag)
-		{
-			if( System.IntPtr.Size == 4 )
-			{
-				return dx_SetAlwaysRunFlag_x86( Flag );
-			}
-			else
-			{
-				return dx_SetAlwaysRunFlag_x64( Flag );
-			}
-		}
-
-
 		[DllImport("DxLibW.dll", EntryPoint="dx_GetRand", CharSet=CharSet.Unicode)]
 		extern static int  dx_GetRand_x86( int  RandMax);
 		[DllImport("DxLibW_x64.dll", EntryPoint="dx_GetRand", CharSet=CharSet.Unicode)]

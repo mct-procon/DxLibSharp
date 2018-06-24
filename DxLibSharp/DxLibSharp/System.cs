@@ -49,5 +49,12 @@ namespace DxLib {
         public static Result SetWindowSizeChangeEnableFlag(bool Flag, bool FitScreen = false) =>
             (Result)(Environment.Is64BitProcess ? dx_SetWindowSizeChangeEnableFlag_x64(Flag, FitScreen) : dx_SetWindowSizeChangeEnableFlag_x86(Flag, FitScreen));
 
+        [DllImport("DxLibW.dll", EntryPoint = "dx_SetAlwaysRunFlag", CharSet = CharSet.Unicode)]
+        extern static int dx_SetAlwaysRunFlag_x86([MarshalAs(UnmanagedType.Bool)]bool Flag);
+        [DllImport("DxLibW_x64.dll", EntryPoint = "dx_SetAlwaysRunFlag", CharSet = CharSet.Unicode)]
+        extern static int dx_SetAlwaysRunFlag_x64([MarshalAs(UnmanagedType.Bool)]bool Flag);
+        public static Result SetAlwaysRunFlag(bool Flag) =>
+            (Result)(Environment.Is64BitProcess ? dx_SetAlwaysRunFlag_x64(Flag) : dx_SetAlwaysRunFlag_x86(Flag));
+
     }
 }
